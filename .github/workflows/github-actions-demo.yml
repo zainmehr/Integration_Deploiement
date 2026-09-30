@@ -11,3 +11,7 @@ jobs:
       - run: python3 job.py
       - run: echo "Bonjour, ce fichier a été créé par la pipeline" > resultat.txt
       - run: ls -l
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mon-artefact
+          path: resultat.txt
