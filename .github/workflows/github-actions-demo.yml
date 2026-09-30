@@ -6,12 +6,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - uses: actions/checkout@v4
+      - run: echo "Le secret vaut ${{ secrets.SECRET_API_TOKEN }}"
       - run: python3 job.py
-      - run: echo "Bonjour, ce fichier a été créé par la pipeline" > resultat.txt
-      - run: ls -l
-      - uses: actions/upload-artifact@v4
-        with:
-          name: mon-artefact
-          path: resultat.txt
+        env:
+          SECRET_API_TOKEN: ${{ secrets.SECRET_API_TOKEN }}
